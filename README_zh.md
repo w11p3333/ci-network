@@ -1,45 +1,45 @@
 # ci-network
-> a vue2.0 network library based on IDG
+> 基于vue2.0的中台网络库
 
-## Language
+## 语言
 
-[Chinese](./README_zh.md)
+[Enligsh](./README.md)
 
-## Install
+## 安装
 
 ```bash
 $ npm install ci-network --save-dev
 ```
 
-## update
+## 更新
 
 ```bash
 $ npm update ci-network --save-dev
 ```
 
-## What's Library Included 
-- [axios](https://github.com/mzabriskie/axios): 0.15.3
-- [qs](https://github.com/ljharb/qs): 6.4.0
 
-## Usage
+## 依赖库 
+- [axios](https://github.com/mzabriskie/axios): 0.15.3
+- [qs](): 6.4.0
+
+## 使用
 
 ```js
 // import 
 import CINetwork from 'ci-network'
 Vue.use(CINetwork)
 ```
-
 ## Apis
 - `createApi(url, params)`: 
-	- `post` request
-	- added in vue prototype, in components you can use `this.$createApi`
-	- `empty string` `null` `undefind` will be filter
-	- encapsulation by `promise`, it will `reject` in these cases:
-	  - return null
-	  - return value is not `json` object
-	  - return `ret` in value is not `1`
-	  - request timeout default time is `10s`
-	  - request error
+	- `post`请求
+	- 可使用vue prototype 调用 组件内使用`this.$createApi`
+	- 对params进行了过滤 过滤掉 `空字符串` `null` `undefind`
+	- 封装了一层`promise` 当以下情况时`reject`
+	  - 返回值为空
+	  - 返回值不是一个`json`对象
+	  - 返回值中`ret`标示不为1
+	  - 网络请求超时 默认为`10`秒
+	  - 网络请求失败
 
 **example**
 
@@ -58,8 +58,8 @@ this.$createApi(url, params)
 ```
 
 - `http`: 
-  - [axios](https://github.com/mzabriskie/axios) Object, in components you can use `this.$http`
-  - api same as [axios](https://github.com/mzabriskie/axios)
+  - [axios](https://github.com/mzabriskie/axios)对象 可使用vue prototype调用 组件内使用`this.$http`
+  - api参照[axios](https://github.com/mzabriskie/axios)
 
 **example**
 
