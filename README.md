@@ -13,27 +13,22 @@ $ npm install ci-network --save-dev
 
 ## Usage
 
-```
+```js
 // import 
 import CINetwork from 'ci-network'
 Vue.use(CINetwork)
 ```
 
-## apis
+## Apis
 - createApi(url, params)
 
-```
+```js
 // in global
 CINetwork.createApi(url, params)
-// in components createApi added in vue prototype
 
+// in components createApi added in vue prototype
 this.$createApi(url, params)
 .then(res => {
-	// res = {
-	//		ret: 1
-	//      data: []
-	//	}
-	// when return res and ret !== 1
 })
 .catch(error => {
 	// error
@@ -41,7 +36,37 @@ this.$createApi(url, params)
 
 ```
 
-- http(nature  [axios](https://github.com/mzabriskie/axios) added in vue prototype)
+- source code
+
+```js
+var createApi = function (url, params) {
+    return new Promise((resolve, reject) => {
+    axios.post(url, qs.stringify(filter(params)), {
+      timeout: 10000 // set request timeout
+    })
+    .then((response) => {
+      const res = response.data
+      if (!res) {
+        reject({ message: '请求结果为空' })
+      } else if (typeof res !== 'object') {
+        reject({ message: '服务端返回异常' })
+      } else if (res.ret === -1) {
+        res.message = res.msg
+        reject(res)
+      } else {
+        resolve(res) // request success
+      }
+    })
+    .catch((error) => {
+      reject({ message: '网络请求失败' })
+    })
+  })
+}
+```
+
+
+
+- http (nature [axios](https://github.com/mzabriskie/axios)  function added in vue prototype)
 
 ```js
 // example in components
