@@ -1,0 +1,16 @@
+{
+  "name": "ci-network",
+  "version": "0.0.4",
+  "description": "中台网络库",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "network"
+  ],
+  "author": "luliangxiao",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "qs": "^6.4.0"
+  }
+}
